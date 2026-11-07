@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For IDU 💖</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Fredoka', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Animated Gradient Background */
+            background: linear-gradient(-45deg, #ff9a9e, #fecfef, #ffb199, #f6416c);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #333;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .font-pacifico { font-family: 'Pacifico', cursive; }
+
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 8px 32px 0 rgba(255, 100, 150, 0.37);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.5s ease-in-out;
+        }
+
+        /* Glowing Text */
+        .glow-text {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 77, 109, 0.6);
+        }
+
+        /* Polaroid styling */
+        .polaroid {
+            background: white;
+            padding: 12px 12px 35px 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border-radius: 4px;
+            transform: rotate(-2deg);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .polaroid:hover {
+            transform: rotate(2deg) scale(1.05);
+        }
+
+        /* Floating Hearts Animation */
+        .floating-heart {
+            position: fixed;
+            bottom: -10vh;
+            font-size: 2rem;
+            opacity: 0;
+            animation: floatUp 8s linear infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-120vh) scale(1.5) rotate(360deg); opacity: 0; }
+        }
+
+        /* Buttons */
+        .btn-cute {
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(255, 117, 140, 0.5);
+            transition: all 0.2s;
+        }
+        .btn-cute:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 117, 140, 0.7);
+        }
+        .btn-cute:active {
+            transform: translateY(1px);
+        }
+
+        /* Dodge Button Specifics */
+        #no-btn {
+            position: relative; /* Starts relative, becomes fixed via JS */
+            background: linear-gradient(135deg, #a8a8a8 0%, #d4d4d4 100%);
+            box-shadow: 0 4px 15px rgba(168, 168, 168, 0.5);
+            color: #333;
+            z-index: 50;
+            transition: top 0.2s ease, left 0.2s ease, transform 0.2s ease;
+        }
+
+        /* Confetti piece */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #ff4d6d;
+            z-index: 100;
+            animation: fall 3s linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        .fade-out {
+            opacity: 0;
+            transform: scale(0.9);
+            pointer-events: none;
+        }
+        
+        .fade-in {
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            display: flex !important;
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="relative text-gray-800 p-4">
+
+    <!-- Ambient Floating Hearts Background -->
+    <div id="bg-hearts-container" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- MAIN GLASS CONTAINER -->
+    <div class="glass relative z-10 w-full max-w-lg p-6 md:p-10 flex flex-col items-center text-center mx-auto overflow-hidden">
+        
+        <!-- HEADER -->
+        <h1 id="main-title" class="font-pacifico text-4xl md:text-5xl text-rose-600 mb-2 glow-text">
+            Hey IDU... 💕
+        </h1>
+        <p id="sub-title" class="text-rose-500 mb-8 font-medium">I made a little something for you.</p>
+
+        <!-- SECTION 1: SLIDESHOW -->
+        <div id="section-slideshow" class="w-full flex flex-col items-center transition-all duration-500">
+            <div class="polaroid mb-6 w-64 h-80 sm:w-72 sm:h-96 relative">
+                <img id="slideshow-img" 
+                     src="893892812_1712530613778095_2002060436460641120_n.jpg" 
+                     alt="IDU's Bouquet" 
+                     class="w-full h-full object-cover rounded bg-pink-100 transition-opacity duration-300">
+                <div class="absolute bottom-2 left-0 right-0 text-center font-pacifico text-rose-500 text-xl" id="img-counter">
+                    1 / 5
+                </div>
+            </div>
+            <button id="next-btn" class="btn-cute font-bold py-3 px-8 rounded-full text-lg cursor-pointer flex items-center gap-2">
+                See the next one ✨
+            </button>
+        </div>
+
+        <!-- SECTION 2: THE TRICK QUESTION (Hidden Initially) -->
+        <div id="section-question" class="hidden flex-col items-center w-full py-8">
+            <h2 class="font-pacifico text-3xl md:text-4xl text-rose-600 mb-8 leading-tight glow-text">
+                Serious question though... <br>
+                Do you love me the mostest? 🥺
+            </h2>
+            
+            <div class="flex flex-row gap-6 items-center justify-center w-full relative min-h-[60px]">
+                <button id="yes-btn" class="btn-cute font-bold py-3 px-10 rounded-full text-xl cursor-pointer">
+                    YES!!! 🥰
+                </button>
+                <button id="no-btn" class="font-bold py-3 px-10 rounded-full text-xl cursor-pointer">
+                    No 🙄
+                </button>
+            </div>
+        </div>
+
+        <!-- SECTION 3: THE FINAL SURPRISE (Hidden Initially) -->
+        <div id="section-surprise" class="hidden flex-col items-center py-4">
+            <div class="text-6xl mb-4 animate-bounce">🎉💘💐</div>
+            <h2 class="font-pacifico text-4xl text-rose-600 mb-4 glow-text">YAYYY! I knew it!</h2>
+            <p class="text-lg md:text-xl mb-6 leading-relaxed font-medium text-gray-700">
+                You are my favorite flower in the whole world, IDU.<br>
+                I love you so, so much! Here is a billion kisses for you! 😘😘😘
+            </p>
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <!-- Mini polaroids for the surprise -->
+                <img src="848025855_1677738110386090_1477431704252258005_n.jpg" class="w-20 h-24 object-cover rounded-sm shadow-md transform -rotate-6">
+                <img src="848025855_2169603587284210_5936566566990625249_n.jpg" class="w-20 h-24 object-cover rounded-sm shadow-md transform scale-110 z-10">
+                <img src="888618200_997225766790365_5181816589001089221_n.jpg" class="w-20 h-24 object-cover rounded-sm shadow-md transform rotate-6">
+            </div>
+            <button onclick="location.reload()" class="text-rose-400 font-bold hover:text-rose-600 underline">
+                Restart the Magic ✨
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // --- DATA & ELEMENTS ---
+        const images = [
+            "893892812_1712530613778095_2002060436460641120_n.jpg",
+            "889538488_1611265127138884_8116997879205657587_n.jpg",
+            "848025855_1677738110386090_1477431704252258005_n.jpg",
+            "848025855_2169603587284210_5936566566990625249_n.jpg",
+            "888618200_997225766790365_5181816589001089221_n.jpg"
+        ];
+        
+        let currentIndex = 0;
+        
+        const secSlideshow = document.getElementById('section-slideshow');
+        const secQuestion = document.getElementById('section-question');
+        const secSurprise = document.getElementById('section-surprise');
+        const title = document.getElementById('main-title');
+        const subtitle = document.getElementById('sub-title');
+        
+        const imgElement = document.getElementById('slideshow-img');
+        const imgCounter = document.getElementById('img-counter');
+        const nextBtn = document.getElementById('next-btn');
+        
+        const yesBtn = document.getElementById('yes-btn');
+        const noBtn = document.getElementById('no-btn');
+
+        // Preload images
+        images.forEach(src => { const img = new Image(); img.src = src; });
+
+        // --- SLIDESHOW LOGIC ---
+        nextBtn.addEventListener('click', () => {
+            currentIndex++;
+            
+            if (currentIndex < images.length) {
+                // Change Image
+                imgElement.style.opacity = 0;
+                setTimeout(() => {
+                    imgElement.src = images[currentIndex];
+                    imgCounter.innerText = `${currentIndex + 1} / ${images.length}`;
+                    imgElement.style.opacity = 1;
+                    
+                    if (currentIndex === images.length - 1) {
+                        nextBtn.innerHTML = "I have a question... 🫣";
+                    }
+                }, 300);
+            } else {
+                // Move to Trick Question
+                secSlideshow.classList.add('fade-out');
+                setTimeout(() => {
+                    secSlideshow.style.display = 'none';
+                    title.style.display = 'none';
+                    subtitle.style.display = 'none';
+                    
+                    secQuestion.classList.remove('hidden');
+                    secQuestion.classList.add('fade-in');
+                }, 500);
+            }
+        });
+
+        // --- TRICK QUESTION LOGIC (The dodger) ---
+        let isDodging = false;
+
+        function dodgeButton() {
+            if(!isDodging) {
+                // First time it dodges, change to fixed positioning so it can go anywhere on screen
+                noBtn.style.position = 'fixed';
+                isDodging = true;
+            }
+            
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
+            
+            // Calculate safe boundaries (keep it within window view)
+            const maxX = window.innerWidth - btnWidth - 20;
+            const maxY = window.innerHeight - btnHeight - 20;
+            
+            const randomX = Math.max(20, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(20, Math.floor(Math.random() * maxY));
+            
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        // Trigger on mouse over or touch
+        noBtn.addEventListener('mouseover', dodgeButton);
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // Prevents accidental clicking on mobile
+            dodgeButton();
+        });
+        // Just in case they somehow click it
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            dodgeButton();
+        });
+
+
+        // --- CELEBRATION LOGIC (Clicking YES) ---
+        yesBtn.addEventListener('click', () => {
+            // Hide Question
+            secQuestion.style.display = 'none';
+            // Hide the No button if it ran away
+            noBtn.style.display = 'none'; 
+            
+            // Show Surprise
+            secSurprise.classList.remove('hidden');
+            secSurprise.classList.add('fade-in');
+            
+            // Launch Confetti & Extra Hearts
+            launchConfetti();
+            createHeartExplosion();
+        });
+
+        function launchConfetti() {
+            const colors = ['#ff4d6d', '#ff758c', '#ffb199', '#ffffff', '#ffd700'];
+            for(let i=0; i<100; i++) {
+                setTimeout(() => {
+                    const conf = document.createElement('div');
+                    conf.classList.add('confetti');
+                    conf.style.left = Math.random() * 100 + 'vw';
+                    conf.style.top = '-10px';
+                    conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    // Randomize shape (some squares, some circles)
+                    if(Math.random() > 0.5) conf.style.borderRadius = '50%';
+                    
+                    document.body.appendChild(conf);
+                    
+                    setTimeout(() => conf.remove(), 3000);
+                }, i * 20);
+            }
+        }
+
+        function createHeartExplosion() {
+            for(let i=0; i<30; i++) {
+                setTimeout(createHeart, Math.random() * 1000);
+            }
+        }
+
+        // --- BACKGROUND HEARTS ANIMATION ---
+        const bgHeartsContainer = document.getElementById('bg-hearts-container');
+        const emojis = ['💖', '🌸', '✨', '💕', '🌷'];
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's'; // 5 to 10 seconds
+            heart.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+            
+            bgHeartsContainer.appendChild(heart);
+            setTimeout(() => heart.remove(), 10000);
+        }
+
+        // Generate ambient hearts periodically
+        setInterval(createHeart, 800);
+        // Initial burst
+        for(let i=0; i<10; i++) createHeart();
+
+    </script>
+</body>
+</html>
